@@ -7,7 +7,7 @@ import com.waewaee.groceryapp.network.RealtimeDatabaseFirebaseApiImpl
 object GroceryModelImpl : GroceryModel {
     override var mFirebaseApi: FirebaseApi = RealtimeDatabaseFirebaseApiImpl
 
-    override fun getGroceries(onSuccess: (List<GroceryVO>) -> Unit, onFaiure: (String) -> Unit) {
-        mFirebaseApi.getGroceries(onSuccess, onFaiure)
+    override fun getGroceries(onSuccess: (List<GroceryVO>) -> Unit, onFailure: (String) -> Unit) {
+        mFirebaseApi.getGroceries(onSuccess, onFailure)
     }
 }

@@ -15,7 +15,7 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
             onSuccess = {
                 mView.showGroceryData(it)
             },
-            onFaiure = {
+            onFailure = {
                 mView.showErrorMessage(it)
             }
         )
