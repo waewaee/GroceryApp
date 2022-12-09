@@ -12,6 +12,9 @@ import com.waewaee.groceryapp.mvp.presenters.MainPresenter
 import com.waewaee.groceryapp.mvp.presenters.impls.MainPresenterImpl
 import com.waewaee.groceryapp.mvp.views.MainView
 import com.waewaee.groceryapp.R
+import com.waewaee.groceryapp.dialogs.GroceryDialogFragment.Companion.BUNDLE_AMOUNT
+import com.waewaee.groceryapp.dialogs.GroceryDialogFragment.Companion.BUNDLE_DESCRIPTION
+import com.waewaee.groceryapp.dialogs.GroceryDialogFragment.Companion.BUNDLE_NAME
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), MainView {
@@ -63,6 +66,16 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun showGroceryData(groceryList: List<GroceryVO>) {
         mAdapter.setNewData(groceryList)
+    }
+
+    override fun showGroceryDialog(name: String, description: String, amount: String) {
+        val groceryDialog = GroceryDialogFragment.newFragment()
+        val bundle = Bundle()
+        bundle.putString(BUNDLE_NAME, name)
+        bundle.putString(BUNDLE_DESCRIPTION,description)
+        bundle.putString(BUNDLE_AMOUNT, amount)
+        groceryDialog.arguments = bundle
+        groceryDialog.show(supportFragmentManager, GroceryDialogFragment.TAG_ADD_GROCERY_DIALOG)
     }
 
     override fun showErrorMessage(message: String) {
