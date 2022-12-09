@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import com.waewaee.groceryapp.data.vos.GroceryVO
 import com.waewaee.groceryapp.viewholders.GroceryViewHolder
 import com.waewaee.groceryapp.R
+import com.waewaee.groceryapp.delegates.GroceryViewItemActionDelegate
 
-class GroceryAdapter() : BaseRecyclerAdapter<GroceryViewHolder, GroceryVO>() {
+class GroceryAdapter(private val mDelegate: GroceryViewItemActionDelegate) : BaseRecyclerAdapter<GroceryViewHolder, GroceryVO>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroceryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_holder_grocery_item,parent,false)
-        return GroceryViewHolder(view)
+        return GroceryViewHolder(view, mDelegate)
     }
 }

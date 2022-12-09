@@ -24,4 +24,9 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
             }
         )
     }
+
+    override fun onTapDeleteGrocery(name: String) {
+        mGroceryModel.removeGrocery(name)
+    }
+
 }
