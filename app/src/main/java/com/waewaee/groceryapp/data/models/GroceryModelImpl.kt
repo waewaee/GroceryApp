@@ -10,4 +10,10 @@ object GroceryModelImpl : GroceryModel {
     override fun getGroceries(onSuccess: (List<GroceryVO>) -> Unit, onFailure: (String) -> Unit) {
         mFirebaseApi.getGroceries(onSuccess, onFailure)
     }
+
+
+    override fun addGrocery(name: String, description: String, amount: Int) {
+        mFirebaseApi.addGrocery(name, description, amount)
+    }
+
 }

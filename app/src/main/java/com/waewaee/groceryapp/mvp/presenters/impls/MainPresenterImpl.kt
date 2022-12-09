@@ -8,7 +8,11 @@ import com.waewaee.groceryapp.mvp.views.MainView
 
 class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
 
-    val mGroceryModel = GroceryModelImpl
+    private val mGroceryModel = GroceryModelImpl
+
+    override fun onTapAddGrocery(name: String, description: String, amount: Int) {
+        mGroceryModel.addGrocery(name,description,amount)
+    }
 
     override fun onUiReady(owner: LifecycleOwner) {
         mGroceryModel.getGroceries(
