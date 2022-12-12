@@ -11,18 +11,19 @@ import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.waewaee.groceryapp.R
 import com.waewaee.groceryapp.adapters.GroceryAdapter
 import com.waewaee.groceryapp.data.vos.GroceryVO
 import com.waewaee.groceryapp.dialogs.GroceryDialogFragment
-import com.waewaee.groceryapp.mvp.presenters.MainPresenter
-import com.waewaee.groceryapp.mvp.presenters.impls.MainPresenterImpl
-import com.waewaee.groceryapp.mvp.views.MainView
-import com.waewaee.groceryapp.R
 import com.waewaee.groceryapp.dialogs.GroceryDialogFragment.Companion.BUNDLE_AMOUNT
 import com.waewaee.groceryapp.dialogs.GroceryDialogFragment.Companion.BUNDLE_DESCRIPTION
 import com.waewaee.groceryapp.dialogs.GroceryDialogFragment.Companion.BUNDLE_NAME
+import com.waewaee.groceryapp.mvp.presenters.MainPresenter
+import com.waewaee.groceryapp.mvp.presenters.impls.MainPresenterImpl
+import com.waewaee.groceryapp.mvp.views.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
+
 
 class MainActivity : BaseActivity(), MainView {
 
@@ -66,7 +67,7 @@ class MainActivity : BaseActivity(), MainView {
                         mPresenter.onPhotoTaken(bitmap)
                     } else {
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                            applicationContext.contentResolver, filePath
+                            this.contentResolver, filePath
                         )
                         mPresenter.onPhotoTaken(bitmap)
                     }

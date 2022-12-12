@@ -1,7 +1,6 @@
 package com.waewaee.groceryapp.mvp.presenters.impls
 
 import android.graphics.Bitmap
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.waewaee.groceryapp.data.models.GroceryModelImpl
 import com.waewaee.groceryapp.data.vos.GroceryVO
@@ -15,11 +14,13 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
     private var mChosenGroceryForFileUpload: GroceryVO? = null
 
     override fun onTapAddGrocery(name: String, description: String, amount: Int) {
-        mGroceryModel.addGrocery(name,description,amount)
+        mGroceryModel.addGrocery(name, description, amount, "")
     }
 
     override fun onPhotoTaken(bitmap: Bitmap) {
-        Log.d("PhotoTaken", "Photo Taken")
+        mChosenGroceryForFileUpload?.let {
+            mGroceryModel.uploadImageAndUpdateGrocery(it, bitmap)
+        }
     }
 
     override fun onTapEditGrocery(name: String, description: String, amount: Int) {

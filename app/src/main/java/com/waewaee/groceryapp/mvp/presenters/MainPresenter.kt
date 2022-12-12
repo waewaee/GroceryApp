@@ -6,5 +6,5 @@ import com.waewaee.groceryapp.mvp.views.MainView
 
 interface MainPresenter : BasePresenter<MainView>, GroceryViewItemActionDelegate {
     fun onTapAddGrocery(name: String, description: String, amount: Int)
-    fun onPhotoTaken(bitmap : Bitmap)
+    fun onPhotoTaken(bitmap: Bitmap)
 }
