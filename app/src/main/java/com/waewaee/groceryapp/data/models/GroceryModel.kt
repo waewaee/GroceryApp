@@ -3,10 +3,13 @@ package com.waewaee.groceryapp.data.models
 import android.graphics.Bitmap
 import com.waewaee.groceryapp.data.vos.GroceryVO
 import com.waewaee.groceryapp.network.FirebaseApi
+import com.waewaee.groceryapp.network.auth.AuthManager
 
 interface GroceryModel {
 
     var mFirebaseApi : FirebaseApi
+
+    var mAuthManager: AuthManager
 
     fun getGroceries(onSuccess: (List<GroceryVO>) -> Unit, onFailure: (String) -> Unit)
 
@@ -15,4 +18,6 @@ interface GroceryModel {
     fun removeGrocery(name: String)
 
     fun uploadImageAndUpdateGrocery(grocery : GroceryVO, image : Bitmap)
+
+    fun getUserName(): String
 }

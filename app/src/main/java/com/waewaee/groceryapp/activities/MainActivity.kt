@@ -45,11 +45,16 @@ class MainActivity : BaseActivity(), MainView {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
         setUpPresenter()
+        showUserName()
         setUpRecyclerView()
 
         setUpActionListeners()
 
         mPresenter.onUiReady(this)
+    }
+
+    private fun showUserName() {
+        tvUserName.text =  "Welcome : ${mPresenter.getUserName()}"
     }
 
     @RequiresApi(Build.VERSION_CODES.P)

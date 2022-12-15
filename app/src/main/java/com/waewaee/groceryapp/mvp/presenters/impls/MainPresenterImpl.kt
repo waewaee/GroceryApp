@@ -23,6 +23,10 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
         }
     }
 
+    override fun getUserName(): String {
+        return mGroceryModel.getUserName()
+    }
+
     override fun onTapEditGrocery(name: String, description: String, amount: Int) {
         mView.showGroceryDialog(name, description, amount.toString())
     }
