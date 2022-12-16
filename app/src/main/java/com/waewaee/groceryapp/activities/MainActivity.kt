@@ -119,6 +119,10 @@ class MainActivity : BaseActivity(), MainView {
         }
     }
 
+    override fun displayToolbarTitle(title: String) {
+        supportActionBar?.title = title
+    }
+
     override fun showGroceryData(groceryList: List<GroceryVO>) {
         mAdapter.setNewData(groceryList)
     }

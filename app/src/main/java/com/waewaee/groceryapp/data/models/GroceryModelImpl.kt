@@ -6,6 +6,7 @@ import com.waewaee.groceryapp.network.CloudFirestoreFirebaseApiImpl
 import com.waewaee.groceryapp.network.FirebaseApi
 import com.waewaee.groceryapp.network.auth.AuthManager
 import com.waewaee.groceryapp.network.auth.FirebaseAuthManager
+import com.waewaee.groceryapp.network.remoteconfig.FirebaseRemoteConfigManager
 
 object GroceryModelImpl : GroceryModel {
 //    override var mFirebaseApi: FirebaseApi = RealtimeDatabaseFirebaseApiImpl
@@ -13,6 +14,9 @@ object GroceryModelImpl : GroceryModel {
     override var mFirebaseApi: FirebaseApi = CloudFirestoreFirebaseApiImpl
 
     override var mAuthManager: AuthManager = FirebaseAuthManager
+
+    override var mFirebaseRemoteConfigManager: FirebaseRemoteConfigManager = FirebaseRemoteConfigManager
+
 
     override fun getGroceries(onSuccess: (List<GroceryVO>) -> Unit, onFailure: (String) -> Unit) {
         mFirebaseApi.getGroceries(onSuccess, onFailure)
@@ -32,5 +36,17 @@ object GroceryModelImpl : GroceryModel {
 
     override fun getUserName(): String {
         return mAuthManager.getUserName()
+    }
+
+    override fun setUpRemoteConfigWithDefaultValues() {
+        mFirebaseRemoteConfigManager.setUpRemoteConfigWithDefaultValues()
+    }
+
+    override fun fetchRemoteConfigs() {
+        mFirebaseRemoteConfigManager.fetchRemoteConfigs()
+    }
+
+    override fun getAppNameFromRemoteConfig(): String {
+        return mFirebaseRemoteConfigManager.getToolbarName()
     }
 }

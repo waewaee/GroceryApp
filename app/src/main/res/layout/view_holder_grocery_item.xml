@@ -82,6 +82,7 @@
             android:layout_below="@id/tvCount"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:layout_toStartOf="@id/btnDelete"
             android:src="@drawable/ic_baseline_edit_24" />
 
@@ -92,6 +93,7 @@
             android:layout_below="@id/tvCount"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:layout_toStartOf="@id/btnEdit"
             android:src="@drawable/ic_baseline_cloud_upload_24" />
 

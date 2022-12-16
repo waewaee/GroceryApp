@@ -4,10 +4,12 @@ import android.graphics.Bitmap
 import com.waewaee.groceryapp.data.vos.GroceryVO
 import com.waewaee.groceryapp.network.FirebaseApi
 import com.waewaee.groceryapp.network.auth.AuthManager
+import com.waewaee.groceryapp.network.remoteconfig.FirebaseRemoteConfigManager
 
 interface GroceryModel {
 
     var mFirebaseApi : FirebaseApi
+    var mFirebaseRemoteConfigManager : FirebaseRemoteConfigManager
 
     var mAuthManager: AuthManager
 
@@ -20,4 +22,10 @@ interface GroceryModel {
     fun uploadImageAndUpdateGrocery(grocery : GroceryVO, image : Bitmap)
 
     fun getUserName(): String
+
+    fun setUpRemoteConfigWithDefaultValues()
+
+    fun fetchRemoteConfigs()
+
+    fun getAppNameFromRemoteConfig() : String
 }
