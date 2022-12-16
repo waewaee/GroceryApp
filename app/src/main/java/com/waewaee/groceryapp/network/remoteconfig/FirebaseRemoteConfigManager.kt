@@ -18,7 +18,8 @@ object FirebaseRemoteConfigManager {
 
     fun setUpRemoteConfigWithDefaultValues() {
         val defaultValues: Map<String, Any> = hashMapOf(
-            "mainScreenAppBarTitle" to "WW-Grocery-App"
+            "mainScreenAppBarTitle" to "WW-Grocery-App",
+            "groceryListGridView" to "0"
         )
         remoteConfig.setDefaultsAsync(defaultValues)
     }
@@ -39,5 +40,9 @@ object FirebaseRemoteConfigManager {
 
     fun getToolbarName(): String {
         return remoteConfig.getValue("mainScreenAppBarTitle").asString()
+    }
+
+    fun getGroceryListViewType(): String {
+        return remoteConfig.getValue("groceryListGridView").asString()
     }
 }

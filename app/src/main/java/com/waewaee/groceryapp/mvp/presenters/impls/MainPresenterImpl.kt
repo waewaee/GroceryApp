@@ -46,6 +46,7 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
             }
         )
         mView.displayToolbarTitle(mGroceryModel.getAppNameFromRemoteConfig())
+        mView.showGroceryListViewTypeAsConfig(mGroceryModel.getGroceryViewType())
     }
 
     override fun onTapDeleteGrocery(name: String) {

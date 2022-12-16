@@ -28,4 +28,6 @@ interface GroceryModel {
     fun fetchRemoteConfigs()
 
     fun getAppNameFromRemoteConfig() : String
+
+    fun getGroceryViewType() : String
 }

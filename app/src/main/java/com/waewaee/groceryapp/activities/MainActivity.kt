@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.waewaee.groceryapp.R
@@ -46,7 +47,6 @@ class MainActivity : BaseActivity(), MainView {
         setSupportActionBar(findViewById(R.id.toolbar))
         setUpPresenter()
         showUserName()
-        setUpRecyclerView()
 
         setUpActionListeners()
 
@@ -100,11 +100,19 @@ class MainActivity : BaseActivity(), MainView {
         }
     }
 
-    private fun setUpRecyclerView() {
-        mAdapter = GroceryAdapter(mPresenter)
+    private fun setUpRecyclerView(viewType: String) {
+        mAdapter = GroceryAdapter(mPresenter, viewType)
         rvGroceries.adapter = mAdapter
-        rvGroceries.layoutManager =
-            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        when (viewType) {
+            "1" -> {
+                rvGroceries.layoutManager =
+                    GridLayoutManager(applicationContext, 2)
+            }
+            else -> {
+                rvGroceries.layoutManager =
+                    LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -121,6 +129,10 @@ class MainActivity : BaseActivity(), MainView {
 
     override fun displayToolbarTitle(title: String) {
         supportActionBar?.title = title
+    }
+
+    override fun showGroceryListViewTypeAsConfig(viewType: String) {
+        setUpRecyclerView(viewType)
     }
 
     override fun showGroceryData(groceryList: List<GroceryVO>) {
