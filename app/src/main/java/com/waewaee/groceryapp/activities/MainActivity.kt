@@ -50,7 +50,7 @@ class MainActivity : BaseActivity(), MainView {
 
         setUpActionListeners()
 
-        mPresenter.onUiReady(this)
+        mPresenter.onUiReady(this, this)
     }
 
     private fun showUserName() {

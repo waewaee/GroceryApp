@@ -1,7 +1,9 @@
 package com.waewaee.groceryapp.mvp.presenters.impls
 
+import android.content.Context
 import android.graphics.Bitmap
 import androidx.lifecycle.LifecycleOwner
+import com.waewaee.groceryapp.analytics.SCREEN_HOME
 import com.waewaee.groceryapp.data.models.GroceryModelImpl
 import com.waewaee.groceryapp.data.vos.GroceryVO
 import com.waewaee.groceryapp.mvp.presenters.AbstractBasePresenter
@@ -36,7 +38,11 @@ class MainPresenterImpl : MainPresenter, AbstractBasePresenter<MainView>() {
         mView.openGallery()
     }
 
-    override fun onUiReady(owner: LifecycleOwner) {
+    override fun onUiReady(
+        context: Context,
+        owner: LifecycleOwner
+    ) {
+        sendEventsToFirebaseAnalytics(context, SCREEN_HOME)
         mGroceryModel.getGroceries(
             onSuccess = {
                 mView.showGroceryData(it)
